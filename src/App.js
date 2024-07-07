@@ -1,8 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
+import Mainheader from './components/header'
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div>
+      <Mainheader />
+    </div>
+  );
 }
 
 export default App;
