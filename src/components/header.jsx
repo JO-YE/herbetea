@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div>
       <Logo />
-      <hr className=" h-[0px] my-0 py-0 border border-zinc-300" />
+      <hr className=" lgh-[0px] my-0 py-0 border border-zinc-300" />
       <Navlist />
     </div>
   )
