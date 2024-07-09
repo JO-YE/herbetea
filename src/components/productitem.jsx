@@ -19,7 +19,7 @@ import product15 from "../components/assets/product/product15.png";
 import product16 from "../components/assets/product/product16.png";
 import product17 from "../components/assets/product/product17.png";
 import product18 from "../components/assets/product/product18.png";
-
+import PageList from "../components/pagelist"
 
 const products = [
   {
@@ -55,7 +55,7 @@ const products = [
     price: 3500,
     image: product4,
   },
-  
+
   {
     id: 5,
     name: "Divine Diva Delight",
@@ -186,7 +186,9 @@ const products = [
 const productItem = () => {
   return (
     <div className="my-26">
-      <h2 className="text-neutral-900 opacity-90 text-3xl font-normal font-Quicksand p-5 px-9">All Products</h2>
+      <h2 className="text-neutral-900 opacity-90 text-3xl font-normal font-Quicksand p-5 px-9">
+        All Products
+      </h2>
       <div className="container mx-auto p-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {/** product box */}
@@ -269,6 +271,7 @@ const productItem = () => {
           ))}
         </div>
       </div>
+      <PageList />
     </div>
   );
 };
