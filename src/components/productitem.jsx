@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import love from "../components/assets/product/heart.png";
 import lovebg from "../components/assets/product/lovebg.png";
 import product1 from "../components/assets/product/product1.png";
@@ -19,7 +20,7 @@ import product15 from "../components/assets/product/product15.png";
 import product16 from "../components/assets/product/product16.png";
 import product17 from "../components/assets/product/product17.png";
 import product18 from "../components/assets/product/product18.png";
-import PageList from "../components/pagelist"
+import PageList from "../components/pagelist";
 
 const products = [
   {
@@ -183,7 +184,19 @@ const products = [
   },
 ];
 
-const productItem = () => {
+const ProductItem = () => {
+  const navigate = useNavigate();
+
+  // this is used when we want it to display per id/list
+ /* const handleProductClick = (id) => {
+    navigate(`/productdetails/${id}`);
+  }; */
+
+  const handleProductClick = (id) => {
+    navigate(`/productdetails/${id}`);
+  };
+
+
   return (
     <div className="my-26">
       <h2 className="text-neutral-900 opacity-90 text-3xl font-normal font-Quicksand p-5 px-9">
@@ -191,17 +204,18 @@ const productItem = () => {
       </h2>
       <div className="container mx-auto p-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/** product box */}
           {products.map((product) => (
-            <div key={product.id} className="w-[354px] h-[471px] relative">
+            <div
+              key={product.id}
+              className="w-[354px] h-[471px] relative cursor-pointer"
+              onClick={() => handleProductClick(product.id)}
+            >
               <div className="relative">
                 <img
                   src={product.image}
                   alt={product.name}
                   className="w-[354px] h-auto mb-4 rounded-md"
                 />
-
-                {/** love icon background */}
                 <div
                   className="absolute top-7 right-5 flex items-center justify-center w-12 h-12"
                   style={{
@@ -209,28 +223,22 @@ const productItem = () => {
                     backgroundSize: "cover",
                   }}
                 >
-                  <img src={love} alt="Love Icon" className="w-6 h-6" />{" "}
-                  {/* Love icon */}
+                  <img src={love} alt="Love Icon" className="w-6 h-6" />
                 </div>
               </div>
-
-              {/** Product details */}
               <div className="flex justify-between">
-                {/** left side */}
                 <div className="text-left">
                   <h3 className="w-[202px] text-neutral-900 text-xl font-medium font-Playfair Display mb-2">
                     {product.name}
                   </h3>
-                  <p className=" text-neutral-900 text-base font-normal font-Quicksand mb-2">
+                  <p className="text-neutral-900 text-base font-normal font-Quicksand mb-2">
                     {product.note}
                   </p>
-
-                  {/** product rating */}
                   <div className="flex items-center">
                     {[...Array(5)].map((_, i) => (
                       <svg
                         key={i}
-                        className={`w-5 h-5  ${
+                        className={`w-5 h-5 ${
                           i < Math.floor(product.rating)
                             ? "text-yellow-500"
                             : "text-gray-300"
@@ -251,18 +259,17 @@ const productItem = () => {
                       >
                         <path d="M9.049.957L7.156 6.09H1.6l4.517 3.288L4.201 16l4.849-3.572L13.898 16l-1.916-6.622L16.5 6.09h-5.556L9.049.957z" />
                       </svg>
-                    )}{" "}
+                    )}
                     <span className="pl-3 text-black text-base font-normal font-Quicksand">
                       (58)
                     </span>
                   </div>
                 </div>
-                {/** right side */}
                 <div className="text-right">
-                  <p className="text-neutral-900 text-xl font-medium font-Playfair Display mb-2">
+                  <p className="text-neutral-900 text-xl font-medium font-Playfair Display mb                  -2">
                     ₦{product.price.toLocaleString()}
                   </p>
-                  <button className=" w-[111px] h-10 p-2.5 bg-orange-500 text-neutral-50 rounded justify-center items-center gap-2.5 inline-flex font-semibold font-Quicksand">
+                  <button className="w-[111px] h-10 p-2.5 bg-orange-500 text-neutral-50 rounded justify-center items-center gap-2.5 inline-flex font-semibold font-Quicksand">
                     Add to Cart
                   </button>
                 </div>
@@ -276,4 +283,5 @@ const productItem = () => {
   );
 };
 
-export default productItem;
+export default ProductItem;
+
