@@ -67,7 +67,7 @@ const Logo = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className="lg:hidden flex justify-end items-center mt-4 gap-3 pl-2">
+      <div className="lg:hidden flex justify-end items-center mt-4">
         <button
           onClick={toggleMobileMenu}
           className="block text-gray-900 bg-white focus:outline-none lg:hidden"
