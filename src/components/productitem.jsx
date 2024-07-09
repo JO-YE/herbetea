@@ -193,7 +193,7 @@ const ProductItem = () => {
   }; */
 
   const handleProductClick = (id) => {
-    navigate(`/productdetails/${id}`);
+    navigate(`/productdetails`);
   };
 
 
