@@ -10,7 +10,7 @@ import google from "../components/assets/google.png";
 
 const homepage = () => {
   return (
-    <div className="bg-neutral-50 pt-2">
+    <div className="bg-white pt-2">
       {/** row 1 */}
       <div className="relative lg:w-full max-w-[1100px] mx-auto rounded-tl-[10px] rounded-bl-[10px] overflow-hidden">
         {/* Green overlay */}

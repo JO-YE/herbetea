@@ -10,7 +10,7 @@ const Logo = () => {
   };
 
   return (
-    <div className="bg-white pt-10 lg:bg-neutral-50 w-full h-20 pb-40 px-24 py-56 relative flex justify-between items-start overflow-hidden">
+    <div className="bg-white pt-10 lg:bg-white w-full h-20 pb-40 px-24 py-56 relative flex justify-between items-start overflow-hidden">
       {/* App header logo */}
       <section className="w-[200px] md:w-[200px] lg:w-[250px] h-20 relative">
         <div className="left-0 top-0 absolute text-green-900 text-[24px] md:text-[28px] lg:text-[34px] font-normal italic">
