@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import searchIcon from "./assets/search.png";
 import cart from "./assets/shopping-cart.png";
-import ellipse from "./assets/ellipse-1.png";
 
 const Logo = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -68,7 +67,7 @@ const Logo = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className="lg:hidden flex justify-end items-center mt-4">
+      <div className="lg:hidden flex justify-end items-center mt-4 gap-3 pl-2">
         <button
           onClick={toggleMobileMenu}
           className="block text-gray-900 bg-white focus:outline-none lg:hidden"
