@@ -2,54 +2,72 @@ import React, { useState } from "react";
 import Mainheader from "../components/header";
 import Foot from "../components/Footer";
 import ShoppingCartRow from "../components/shoppingcart";
-import img1 from '../components/assets/hompage/pic4.png'
-import img2 from '../components/assets/serenetea.png'
-import img3 from '../components/assets/hompage/pic2.png'
+import img1 from "../components/assets/hompage/pic4.png";
+import img2 from "../components/assets/serenetea.png";
+import img3 from "../components/assets/hompage/pic2.png";
 
 const Checkout = () => {
   const [cart, setCart] = useState([
     {
       id: 1,
-      name: 'Blossom Harmony Tea',
-      description: 'A perfect blend of nature’s finest herbs.',
+      name: "Blossom Harmony Tea",
+      description: "A perfect blend of nature’s finest herbs.",
       image: img1,
       price: 3500,
       quantity: 1,
     },
     {
       id: 2,
-      name: 'Serene Goddess Herbal Tea',
-      description: 'A perfect blend of nature’s finest herbs.',
+      name: "Serene Goddess Herbal Tea",
+      description: "A perfect blend of nature’s finest herbs.",
       image: img2,
       price: 3500,
       quantity: 1,
     },
-
     {
       id: 3,
-      name: 'Vitality Vixen Infusion',
-      description: 'A perfect blend of nature’s finest herbs.',
+      name: "Vitality Vixen Infusion",
+      description: "A perfect blend of nature’s finest herbs.",
       image: img3,
       price: 3500,
       quantity: 1,
     },
   ]);
 
+
+// Function for add and minus of the product
   const handleRemove = (id) => {
     setCart(cart.filter((product) => product.id !== id));
   };
 
   const handleIncrease = (id) => {
-    setCart(cart.map((product) =>
-      product.id === id ? { ...product, quantity: product.quantity + 1 } : product
-    ));
+    setCart(
+      cart.map((product) =>
+        product.id === id
+          ? { ...product, quantity: product.quantity + 1 }
+          : product
+      )
+    );
   };
 
+  // Function for Order Summary
   const handleDecrease = (id) => {
-    setCart(cart.map((product) =>
-      product.id === id ? { ...product, quantity: Math.max(1, product.quantity - 1) } : product
-    ));
+    setCart(
+      cart.map((product) =>
+        product.id === id
+          ? { ...product, quantity: Math.max(1, product.quantity - 1) }
+          : product
+      )
+    );
   };
+
+  // this function sum up the shopping item
+  const shippingFee = 3000;
+  const subtotal = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+  const total = subtotal + shippingFee;
 
   return (
     <div>
@@ -71,8 +89,27 @@ const Checkout = () => {
                 onDecrease={handleDecrease}
               />
             ))}
-            <h2 className="text-xl font-semibold mt-8 mb-4">Order Summary</h2>
-           
+
+            {/** For Order Summary */}
+            <h2 className="w-[278px] text-neutral-900 text-3xl font-normal font-Quicksand mt-9">Order Summary</h2>
+            <table className="w-full text-left">
+              <tbody>
+                <tr className="">
+                  <td className="w-[101px] text-neutral-900 opacity-95 text-xl font-normal font-Playfair Display py-3">Subtotal:</td>
+                  <td className="py-2 text-right text-neutral-900 opacity-95 text-2xl font-normal font-Playfair Display">₦{subtotal.toFixed(2)}</td>
+                </tr>
+                <tr className="">
+                  <td className=" w-[101px] text-neutral-900 opacity-95 text-xl font-normal font-Playfair Display py-3">Shipping Fee:</td>
+                  <td className="py-2 text-right  text-neutral-900 opacity-95 text-2xl font-normal font-Playfair Display">₦{shippingFee.toFixed(2)}</td>
+                </tr>
+                <tr className="">
+                  <td className="w-[101px] text-neutral-900 opacity-95 text-xl font-normal font-Playfair Display py-3">Total:</td>
+                  <td className="py-2 text-right  text-neutral-900 opacity-95 text-2xl font-normal font-Playfair Display">
+                    ₦{total.toFixed(2)}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
           {/* Right container */}
