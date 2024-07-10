@@ -28,9 +28,12 @@ const homepage = () => {
                 Nurture your wellness with our Women’s Herbal Tea. Discover the
                 perfect blend of nature’s finest herbs at Herbetea
               </p>
-              <button className="lg:mt-12 p-2.5 bg-orange-500 rounded-lg justify-center items-center gap-2.5 inline-flex text-neutral-50 text-1xl font-semibold font-Quicksand">
-                Explore Products
-              </button>
+
+              <a href="/product">
+                <button className="lg:mt-12 p-2.5 bg-orange-500 rounded-lg justify-center items-center gap-2.5 inline-flex text-neutral-50 text-1xl font-semibold font-Quicksand">
+                  Explore Products
+                </button>
+              </a>
             </div>
           </div>
 
@@ -77,9 +80,11 @@ const homepage = () => {
                   Our Specially crafted slimming herbal tea blends are designed
                   to support women’s health and well-being.
                 </p>
-                <button className="w-[263px] h-[67px] mt-12 p-2.5  bg-green-900 rounded-lg justify-center items-center gap-2.5 inline-flex text-neutral-50 text-1xl font-semibold font-Quicksand">
-                  Buy Now
-                </button>
+                <a href="/checkout">
+                  <button className="w-[263px] h-[67px] mt-12 p-2.5  bg-green-900 rounded-lg justify-center items-center gap-2.5 inline-flex text-neutral-50 text-1xl font-semibold font-Quicksand">
+                    Buy Now
+                  </button>
+                </a>
               </div>
             </div>
           </div>
@@ -101,9 +106,11 @@ const homepage = () => {
                   Our Specially crafted slimming herbal tea blends are designed
                   to support women’s health and well-being.
                 </p>
-                <button className="w-[263px] h-[67px] mt-16 p-2.5 bg-green-900 rounded-lg justify-center items-center gap-2.5 inline-flex text-neutral-50 text-1xl font-semibold font-Quicksand">
-                  Buy Now
-                </button>
+                <a href="/checkout">
+                  <button className="w-[263px] h-[67px] mt-12 p-2.5  bg-green-900 rounded-lg justify-center items-center gap-2.5 inline-flex text-neutral-50 text-1xl font-semibold font-Quicksand">
+                    Buy Now
+                  </button>
+                </a>
               </div>
             </div>
             <div className="flex-1 relative">
@@ -139,9 +146,11 @@ const homepage = () => {
                   Our Specially crafted slimming herbal tea blends are designed
                   to support women’s health and well-being.
                 </p>
-                <button className="w-[263px] h-[67px] mt-16 p-2.5 bg-green-900 rounded-lg justify-center items-center gap-2.5 inline-flex text-neutral-50 text-1xl font-semibold font-Quicksand">
-                  Buy Now
-                </button>
+                <a href="/checkout">
+                  <button className="w-[263px] h-[67px] mt-12 p-2.5  bg-green-900 rounded-lg justify-center items-center gap-2.5 inline-flex text-neutral-50 text-1xl font-semibold font-Quicksand">
+                    Buy Now
+                  </button>
+                </a>
               </div>
             </div>
           </div>
@@ -155,42 +164,44 @@ const homepage = () => {
           <div className="w-[371px] h-[0px] border border-neutral-900 opacity-90"></div>
         </div>
       </div>
-      <div className="flex pb-52 items-center justify-center space-x-4">
-        <div className="relative w-[100px] h-[42px] bg-white rounded-lg border border-green-900 opacity-60 flex items-center justify-center">
-          <img
-            src={visa}
-            alt=""
-            className="m-auto  object-contain rounded-lg blue-700"
-          />
-        </div>
-        <div className="relative w-[100px] h-[42px] bg-white rounded-lg border border-green-900 opacity-60 flex items-center justify-center">
-          <img src={master} alt="" className=" object-contain rounded-lg " />
-        </div>
-        <div className="relative w-[100px] h-[42px] bg-white rounded-lg border border-green-900 opacity-60 flex items-center justify-center">
-          <div className="flex items-center">
+      <a href="/checkout">
+        <div className="flex pb-52 items-center justify-center space-x-4">
+          <div className="relative w-[100px] h-[42px] bg-white rounded-lg border border-green-900 opacity-60 flex items-center justify-center">
             <img
-              src={apple}
+              src={visa}
               alt=""
-              className="w-[32px] h-[32px] object-contain rounded-lg"
+              className="m-auto  object-contain rounded-lg blue-700"
             />
-            <p className="ml-2 text-black opacity-90 text-[22px] font-medium font-Inter">
-              Pay
-            </p>
+          </div>
+          <div className="relative w-[100px] h-[42px] bg-white rounded-lg border border-green-900 opacity-60 flex items-center justify-center">
+            <img src={master} alt="" className=" object-contain rounded-lg " />
+          </div>
+          <div className="relative w-[100px] h-[42px] bg-white rounded-lg border border-green-900 opacity-60 flex items-center justify-center">
+            <div className="flex items-center">
+              <img
+                src={apple}
+                alt=""
+                className="w-[32px] h-[32px] object-contain rounded-lg"
+              />
+              <p className="ml-2 text-black opacity-90 text-[22px] font-medium font-Inter">
+                Pay
+              </p>
+            </div>
+          </div>
+          <div className="relative w-[100px] h-[42px] bg-white rounded-lg border border-green-900 opacity-60 flex items-center justify-center">
+            <div className="flex items-center">
+              <img
+                src={google}
+                alt=""
+                className="w-[32px] h-[32px] object-contain rounded-lg"
+              />
+              <p className="ml-2 text-black opacity-90 text-[22px] font-medium font-Inter">
+                Pay
+              </p>
+            </div>
           </div>
         </div>
-        <div className="relative w-[100px] h-[42px] bg-white rounded-lg border border-green-900 opacity-60 flex items-center justify-center">
-          <div className="flex items-center">
-            <img
-              src={google}
-              alt=""
-              className="w-[32px] h-[32px] object-contain rounded-lg"
-            />
-            <p className="ml-2 text-black opacity-90 text-[22px] font-medium font-Inter">
-              Pay
-            </p>
-          </div>
-        </div>
-      </div>
+      </a>
     </div>
   );
 };
