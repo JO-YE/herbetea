@@ -1,6 +1,6 @@
 # About **herbetea**
 - this is a static webpage project built for HNG task 2. 
-- [Figma file](https://www.figma.com/design/GTnTZL2vBMTt9GZDJ9Jihq/Florence-single-product-seller-website?node-id=1-31&m=dev)
+- [Figma file](https://www.figma.com/design/O3izMgqmzVkhm81UeoW3Z5/Single-seller-product-website.-%40FlorenceO?node-id=0-1&m=dev)
 - [Herbetea](https://herbetea.vercel.app/)
 
 # Getting Started with Create React App
