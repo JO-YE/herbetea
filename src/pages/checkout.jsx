@@ -34,8 +34,8 @@ const Checkout = () => {
     },
   ]);
 
+  const [orderSuccess, setOrderSuccess] = useState(false);
 
-// Function for add and minus of the product
   const handleRemove = (id) => {
     setCart(cart.filter((product) => product.id !== id));
   };
@@ -50,7 +50,6 @@ const Checkout = () => {
     );
   };
 
-  // Function for Order Summary
   const handleDecrease = (id) => {
     setCart(
       cart.map((product) =>
@@ -61,13 +60,21 @@ const Checkout = () => {
     );
   };
 
-  // this function sum up the shopping item
   const shippingFee = 3000;
   const subtotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
   const total = subtotal + shippingFee;
+
+  const handlePlaceOrder = () => {
+    setOrderSuccess(true);
+  };
+
+  const handleOkayClick = () => {
+    setOrderSuccess(false);
+    // Additional actions can be added here
+  };
 
   return (
     <div>
@@ -90,20 +97,31 @@ const Checkout = () => {
               />
             ))}
 
-            {/** For Order Summary */}
-            <h2 className="w-[278px] text-neutral-900 text-3xl font-normal font-Quicksand mt-9">Order Summary</h2>
+            <h2 className="w-[278px] text-neutral-900 text-3xl font-normal font-Quicksand mt-9">
+              Order Summary
+            </h2>
             <table className="w-full text-left">
               <tbody>
                 <tr className="">
-                  <td className="w-[101px] text-neutral-900 opacity-95 text-xl font-normal font-Playfair Display py-3">Subtotal:</td>
-                  <td className="py-2 text-right text-neutral-900 opacity-95 text-2xl font-normal font-Playfair Display">₦{subtotal.toFixed(2)}</td>
+                  <td className="w-[101px] text-neutral-900 opacity-95 text-xl font-normal font-Playfair Display py-3">
+                    Subtotal:
+                  </td>
+                  <td className="py-2 text-right text-neutral-900 opacity-95 text-2xl font-normal font-Playfair Display">
+                    ₦{subtotal.toFixed(2)}
+                  </td>
                 </tr>
                 <tr className="">
-                  <td className=" w-[101px] text-neutral-900 opacity-95 text-xl font-normal font-Playfair Display py-3">Shipping Fee:</td>
-                  <td className="py-2 text-right  text-neutral-900 opacity-95 text-2xl font-normal font-Playfair Display">₦{shippingFee.toFixed(2)}</td>
+                  <td className=" w-[101px] text-neutral-900 opacity-95 text-xl font-normal font-Playfair Display py-3">
+                    Shipping Fee:
+                  </td>
+                  <td className="py-2 text-right  text-neutral-900 opacity-95 text-2xl font-normal font-Playfair Display">
+                    ₦{shippingFee.toFixed(2)}
+                  </td>
                 </tr>
                 <tr className="">
-                  <td className="w-[101px] text-neutral-900 opacity-95 text-xl font-normal font-Playfair Display py-3">Total:</td>
+                  <td className="w-[101px] text-neutral-900 opacity-95 text-xl font-normal font-Playfair Display py-3">
+                    Total:
+                  </td>
                   <td className="py-2 text-right  text-neutral-900 opacity-95 text-2xl font-normal font-Playfair Display">
                     ₦{total.toFixed(2)}
                   </td>
@@ -172,13 +190,35 @@ const Checkout = () => {
             </form>
 
             <div className="flex justify-center mt-8">
-              <button className="w-full py-3 bg-green-900 text-neutral-50 text-xl font-semibold rounded-lg font-Quicksand">
+              <button
+                className="w-full py-3 bg-green-900 text-neutral-50 text-xl font-semibold rounded-lg font-Quicksand"
+                onClick={handlePlaceOrder}
+              >
                 Place Order
               </button>
             </div>
           </div>
         </div>
       </div>
+
+      {orderSuccess && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg p-8 shadow-lg text-center pt-5">
+            <h2 className="text-neutral-900 text-5xl font-medium font-Quicksand leading-[105px]">Success</h2>
+            <p className="mb-6 w-[523px] text-center text-neutral-900 text-xl font-normal font-Quicksand leading-[31px]">
+              Your payment was successful and your order will be delivered in
+              the next few days.
+            </p>
+            <button
+              className="py-4 px-4 text-neutral-50 text-xl font-semibold font-Quicksand w-[297px] h-[70px] p-2.5 bg-green-900 rounded-lg justify-center items-center gap-2.5 inline-flex"
+              onClick={handleOkayClick}
+            >
+              Okay
+            </button>
+          </div>
+        </div>
+      )}
+
       <Foot />
     </div>
   );
