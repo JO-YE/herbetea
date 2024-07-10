@@ -1,8 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import Mainheader from "../components/header";
 import Foot from "../components/Footer";
+import ShoppingCartRow from "../components/shoppingcart";
+import img1 from '../components/assets/hompage/pic4.png'
+import img2 from '../components/assets/serenetea.png'
+import img3 from '../components/assets/hompage/pic2.png'
 
-const checkout = () => {
+const Checkout = () => {
+  const [cart, setCart] = useState([
+    {
+      id: 1,
+      name: 'Blossom Harmony Tea',
+      description: 'A perfect blend of nature’s finest herbs.',
+      image: img1,
+      price: 3500,
+      quantity: 1,
+    },
+    {
+      id: 2,
+      name: 'Serene Goddess Herbal Tea',
+      description: 'A perfect blend of nature’s finest herbs.',
+      image: img2,
+      price: 3500,
+      quantity: 1,
+    },
+
+    {
+      id: 3,
+      name: 'Vitality Vixen Infusion',
+      description: 'A perfect blend of nature’s finest herbs.',
+      image: img3,
+      price: 3500,
+      quantity: 1,
+    },
+  ]);
+
+  const handleRemove = (id) => {
+    setCart(cart.filter((product) => product.id !== id));
+  };
+
+  const handleIncrease = (id) => {
+    setCart(cart.map((product) =>
+      product.id === id ? { ...product, quantity: product.quantity + 1 } : product
+    ));
+  };
+
+  const handleDecrease = (id) => {
+    setCart(cart.map((product) =>
+      product.id === id ? { ...product, quantity: Math.max(1, product.quantity - 1) } : product
+    ));
+  };
+
   return (
     <div>
       <Mainheader />
@@ -10,12 +58,21 @@ const checkout = () => {
         <div className="flex flex-col lg:flex-row justify-between w-full max-w-[1044px] h-auto lg:h-[827px] mb-40 space-y-0 lg:space-y-0 lg:space-x-0">
           {/* Left container */}
           <div className="w-full lg:w-[672px] h-auto lg:h-[827px] bg-amber-100 rounded-[10px] p-6">
-            <h2 className="text-neutral-900 text-4xl font-normal font-Quicksand">
+            <h2 className="text-neutral-900 text-4xl font-normal font-Quicksand pt-7">
               Shopping Cart
             </h2>
-            {/* Shopping cart items would go here */}
+            {/* Shopping cart items */}
+            {cart.map((product) => (
+              <ShoppingCartRow
+                key={product.id}
+                product={product}
+                onRemove={handleRemove}
+                onIncrease={handleIncrease}
+                onDecrease={handleDecrease}
+              />
+            ))}
             <h2 className="text-xl font-semibold mt-8 mb-4">Order Summary</h2>
-            {/* Order summary details would go here */}
+           
           </div>
 
           {/* Right container */}
@@ -90,4 +147,4 @@ const checkout = () => {
   );
 };
 
-export default checkout;
+export default Checkout;
