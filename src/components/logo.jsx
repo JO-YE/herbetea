@@ -67,7 +67,7 @@ const Logo = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className="lg:hidden flex justify-end items-center mt-4 pl-7">
+      <div className="lg:hidden flex justify-end items-center mt-4 pl-7 ">
         <button
           onClick={toggleMobileMenu}
           className="block text-gray-900 bg-white focus:outline-none lg:hidden"
@@ -80,7 +80,9 @@ const Logo = () => {
 
       {/* Mobile Menu Content */}
       {mobileMenuOpen && (
-        <div className="lg:hidden mt-4">
+        <div
+          className="lg:hidden mt-10 w-full h-full border border-white bg-white absolute top-8 left-0 z-60"
+        >
           {/* Horizontal line */}
           <div className="border-b border-zinc-300 my-2"></div>
 
@@ -96,7 +98,7 @@ const Logo = () => {
           </div>
 
           {/* Nav list */}
-          <nav className="w-full mt-4 navbox flex flex-col items-center space-y-4">
+          <nav className="w-full mt-4 navbox flex flex-col items-center space-y-2 ">
             <a
               href="/"
               className="link text-green-900 text-xl font-normal font-Playfair Display tracking-tight"
@@ -105,7 +107,7 @@ const Logo = () => {
             </a>
             <a
               href="/product"
-              className="link text-green-900 text-xl font-normal font-Playfair Display tracking-tight"
+              className="link text-green-900 text-xl font-normal font-Playfair Display tracking-tight "
             >
               Products
             </a>
