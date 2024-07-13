@@ -2,38 +2,10 @@ import React, { useState } from "react";
 import Mainheader from "../components/header";
 import Foot from "../components/Footer";
 import ShoppingCartRow from "../components/shoppingcart";
-import img1 from "../components/assets/hompage/pic4.png";
-import img2 from "../components/assets/serenetea.png";
-import img3 from "../components/assets/hompage/pic2.png";
+import { useCart } from "../components/cartcontext"; // Import useCart hook
 
 const Checkout = () => {
-  const [cart, setCart] = useState([
-    {
-      id: 1,
-      name: "Blossom Harmony Tea",
-      description: "A perfect blend of nature’s finest herbs.",
-      image: img1,
-      price: 3500,
-      quantity: 1,
-    },
-    {
-      id: 2,
-      name: "Serene Goddess Herbal Tea",
-      description: "A perfect blend of nature’s finest herbs.",
-      image: img2,
-      price: 3500,
-      quantity: 1,
-    },
-    {
-      id: 3,
-      name: "Vitality Vixen Infusion",
-      description: "A perfect blend of nature’s finest herbs.",
-      image: img3,
-      price: 3500,
-      quantity: 1,
-    },
-  ]);
-
+  const { cart, setCart } = useCart(); // Access cart and setCart from CartContext
   const [orderSuccess, setOrderSuccess] = useState(false);
 
   const handleRemove = (id) => {

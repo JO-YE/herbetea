@@ -68,9 +68,26 @@ const ShoppingCart = ({ product, onRemove, onIncrease, onDecrease }) => {
                     <p className="text-neutral-900 text-xl font-medium font-Playfair Display mb-2">
                       ₦{product.price.toLocaleString()}
                     </p>
+                    <div className="flex items-center justify-end space-x-4">
+                      <button
+                        onClick={() => onDecrease(product.id)}
+                        className="quantity-button text-gray-500 text-lg font-normal font-Quicksand"
+                      >
+                        -
+                      </button>
+                      <span className="text-gray-900 text-lg font-normal font-Quicksand">
+                        {product.quantity}
+                      </span>
+                      <button
+                        onClick={() => onIncrease(product.id)}
+                        className="quantity-button text-gray-500 text-lg font-normal font-Quicksand"
+                      >
+                        +
+                      </button>
+                    </div>
                     <button
                       onClick={() => onRemove(product.id)}
-                      className="remove-button text-gray-500 text-lg font-normal font-Quicksand"
+                      className="remove-button text-gray-500 text-lg font-normal font-Quicksand mt-2"
                     >
                       Remove
                     </button>

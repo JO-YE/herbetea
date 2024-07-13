@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import love from '../components/assets/product/heart.png';
 import lovebg from '../components/assets/product/lovebg.png';
 import PageList from '../components/pagelist';
-import { useCart } from '../components/cartcontext'; // Import useCart hook
+import { useCart } from '../components/cartcontext'; // Importing useCart hook
 
 const ProductItem = () => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [showAddedToCart, setShowAddedToCart] = useState(false); // State for notification
   const navigate = useNavigate();
   const { addToCart } = useCart(); // Access addToCart function from CartContext
 
@@ -63,6 +64,13 @@ const ProductItem = () => {
     setCurrentPage(page);
   };
 
+  const addToCartAndShowNotification = (product) => {
+    addToCart(product);
+    setShowAddedToCart(true);
+    setTimeout(() => {
+      setShowAddedToCart(false);
+    }, 2000); // Hide notification after 2 seconds
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -144,7 +152,7 @@ const ProductItem = () => {
                     className="w-[111px] h-10 p-2.5 bg-orange-500 text-neutral-50 rounded justify-center items-center gap-2.5 inline-flex font-semibold font-Quicksand"
                     onClick={(e) => {
                       e.stopPropagation(); // Prevents navigation to product details
-                      addToCart(product);
+                      addToCartAndShowNotification(product);
                     }}
                   >
                     Add to Cart
@@ -160,6 +168,12 @@ const ProductItem = () => {
         totalPages={totalPages}
         onPageChange={handlePageChange}
       />
+      {/* Notification Message */}
+      {showAddedToCart && (
+        <div className="fixed bottom-5 right-5 bg-green-500 text-white py-2 px-4 rounded shadow">
+          Product added to cart!
+        </div>
+      )}
     </div>
   );
 };
