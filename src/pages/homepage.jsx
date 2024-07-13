@@ -80,7 +80,7 @@ const homepage = () => {
                   Our Specially crafted slimming herbal tea blends are designed
                   to support women’s health and well-being.
                 </p>
-                <a href="/checkout">
+                <a href="/">
                   <button className="w-[263px] h-[67px] mt-12 p-2.5  bg-green-900 rounded-lg justify-center items-center gap-2.5 inline-flex text-neutral-50 text-1xl font-semibold font-Quicksand">
                     Buy Now
                   </button>
@@ -106,7 +106,7 @@ const homepage = () => {
                   Our Specially crafted slimming herbal tea blends are designed
                   to support women’s health and well-being.
                 </p>
-                <a href="/checkout">
+                <a href="/">
                   <button className="w-[263px] h-[67px] mt-12 p-2.5  bg-green-900 rounded-lg justify-center items-center gap-2.5 inline-flex text-neutral-50 text-1xl font-semibold font-Quicksand">
                     Buy Now
                   </button>
@@ -146,7 +146,7 @@ const homepage = () => {
                   Our Specially crafted slimming herbal tea blends are designed
                   to support women’s health and well-being.
                 </p>
-                <a href="/checkout">
+                <a href="/">
                   <button className="w-[263px] h-[67px] mt-12 p-2.5  bg-green-900 rounded-lg justify-center items-center gap-2.5 inline-flex text-neutral-50 text-1xl font-semibold font-Quicksand">
                     Buy Now
                   </button>
