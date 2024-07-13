@@ -73,7 +73,6 @@ const Checkout = () => {
 
   const handleOkayClick = () => {
     setOrderSuccess(false);
-    // Additional actions can be added here
   };
 
   return (
