@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import love from "../components/assets/product/heart.png";
-import lovebg from "../components/assets/product/lovebg.png";
-import PageList from "../components/pagelist";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import love from '../components/assets/product/heart.png';
+import lovebg from '../components/assets/product/lovebg.png';
+import PageList from '../components/pagelist';
+import { useCart } from '../components/cartcontext'; // Import useCart hook
 
 const ProductItem = () => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const { addToCart } = useCart(); // Access addToCart function from CartContext
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -60,6 +62,7 @@ const ProductItem = () => {
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
+
 
   if (loading) {
     return <div>Loading...</div>;
@@ -137,7 +140,13 @@ const ProductItem = () => {
                   <p className="text-neutral-900 text-xl font-medium font-Playfair Display mb-2">
                     ₦{product.price.toLocaleString()}
                   </p>
-                  <button className="w-[111px] h-10 p-2.5 bg-orange-500 text-neutral-50 rounded justify-center items-center gap-2.5 inline-flex font-semibold font-Quicksand">
+                  <button
+                    className="w-[111px] h-10 p-2.5 bg-orange-500 text-neutral-50 rounded justify-center items-center gap-2.5 inline-flex font-semibold font-Quicksand"
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevents navigation to product details
+                      addToCart(product);
+                    }}
+                  >
                     Add to Cart
                   </button>
                 </div>

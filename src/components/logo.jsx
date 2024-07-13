@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import searchIcon from "./assets/search.png";
-import cart from "./assets/shopping-cart.png";
+import carticon from "./assets/shopping-cart.png";
 
-const Logo = () => {
+const Logo = ({ cart = [] }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -10,7 +10,7 @@ const Logo = () => {
   };
 
   return (
-    <div className="bg-white pt-10 lg:bg-white w-full h-20 pb-40 px-24 py-56 relative flex justify-between items-start overflow-hidden">
+    <header className="bg-white pt-10 lg:bg-white w-full h-20 pb-40 px-24 py-56 relative flex justify-between items-start overflow-hidden">
       {/* App header logo */}
       <section className="w-[200px] md:w-[200px] lg:w-[250px] h-20 relative">
         <div className="left-0 top-0 absolute text-green-900 text-[24px] md:text-[28px] lg:text-[34px] font-normal italic">
@@ -34,18 +34,22 @@ const Logo = () => {
       </div>
 
       {/* Side logo */}
+      {/* Cart Icon */}
       <div className="flex items-center mt-4 relative">
-        <img
-          src={cart}
-          alt="shopping cart"
-          className="ml-4 w-[20px] h-[20px]"
-        />
-        {/* Red dot indicator */}
-        <div className="absolute top-0 right-0 left-0.3 w-2 h-2 bg-red-500 rounded-full"></div>
+        <a href="/checkout">
+          <img
+            src={carticon}
+            alt="shopping cart"
+            className="ml-4 w-[20px] h-[20px]"
+          />
+          {/* Red dot indicator */}
+          <div className="absolute top-0 right-0 left-0.3 w-2 h-2 bg-red-500 rounded-full flex items-center justify-center text-black">
+            {cart.length}
+          </div>
+        </a>
       </div>
 
       {/* Nav list doing this for desktop view*/}
-
       <div className="hidden md:block w-full md:absolute md:top-[70px] md:left-50 md:z-30 md:mt-10">
         {/* Horizontal line */}
         <div className="border-b border-zinc-300 my-2"></div>
@@ -80,15 +84,17 @@ const Logo = () => {
 
       {/* Mobile Menu Content */}
       {mobileMenuOpen && (
-        <div
-          className="lg:hidden mt-10 w-full h-full border border-white bg-white absolute top-8 left-0 z-60"
-        >
+        <div className="lg:hidden mt-10 w-full h-full border border-white bg-white absolute top-8 left-0 z-60">
           {/* Horizontal line */}
           <div className="border-b border-zinc-300 my-2"></div>
 
           {/* Search Input for Mobile */}
           <div className="flex w-full bg-white border border-green-900 rounded-[10px]">
-            <img src={searchIcon} alt="Search Icon" className="w-4 mt-4 ml-2" />
+            <img
+              src={searchIcon}
+              alt="Search Icon"
+              className="w-4 mt-4 ml-2"
+            />
             <input
               type="text"
               placeholder="Search..."
@@ -114,7 +120,7 @@ const Logo = () => {
           </nav>
         </div>
       )}
-    </div>
+    </header>
   );
 };
 
