@@ -1,201 +1,69 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import love from "../components/assets/product/heart.png";
 import lovebg from "../components/assets/product/lovebg.png";
-import product1 from "../components/assets/product/product1.png";
-import product2 from "../components/assets/product/product2.png";
-import product3 from "../components/assets/product/product3.png";
-import product4 from "../components/assets/product/product4.png";
-import product5 from "../components/assets/product/product5.png";
-import product6 from "../components/assets/product/product6.png";
-import product7 from "../components/assets/product/product7.png";
-import product8 from "../components/assets/product/product8.png";
-import product9 from "../components/assets/product/product9.png";
-import product10 from "../components/assets/product/product10.png";
-import product11 from "../components/assets/product/product11.png";
-import product12 from "../components/assets/product/product12.png";
-import product13 from "../components/assets/product/product13.png";
-import product14 from "../components/assets/product/product14.png";
-import product15 from "../components/assets/product/product15.png";
-import product16 from "../components/assets/product/product16.png";
-import product17 from "../components/assets/product/product17.png";
-import product18 from "../components/assets/product/product18.png";
 import PageList from "../components/pagelist";
 
-const products = [
-  {
-    id: 1,
-    name: "Blossom Harmony Tea",
-    note: "A perfect blend of nature",
-    rating: 5,
-    price: 3500,
-    image: product1,
-  },
-  {
-    id: 2,
-    name: "Vitality Vixen Infusion",
-    note: "A perfect blend of nature",
-    rating: 5.0,
-    price: 3500,
-    image: product2,
-  },
-  {
-    id: 3,
-    name: "Serene Goddess Herbal Tea",
-    note: "A perfect blend of nature",
-    rating: 5.0,
-    price: 3500,
-    image: product3,
-  },
-
-  {
-    id: 4,
-    name: "Radiant Harmony Tea",
-    note: "A perfect blend of nature.",
-    rating: 5.0,
-    price: 3500,
-    image: product4,
-  },
-
-  {
-    id: 5,
-    name: "Divine Diva Delight",
-    note: "A perfect blend of nature.",
-    rating: 5.0,
-    price: 3500,
-    image: product5,
-  },
-
-  {
-    id: 6,
-    name: "Pure Bliss Botanicals",
-    note: "A perfect blend of nature.",
-    rating: 5.0,
-    price: 3500,
-    image: product6,
-  },
-
-  {
-    id: 7,
-    name: "Celestial Sister Tea",
-    note: "A perfect blend of nature.",
-    rating: 5.0,
-    price: 3500,
-    image: product7,
-  },
-
-  {
-    id: 8,
-    name: "Tranquil Tea",
-    note: "A perfect blend of nature.",
-    rating: 5.0,
-    price: 3500,
-    image: product8,
-  },
-
-  {
-    id: 9,
-    name: "Wholesome Woman",
-    note: "A perfect blend of nature.",
-    rating: 5.0,
-    price: 3500,
-    image: product9,
-  },
-
-  {
-    id: 10,
-    name: "Mystic Maiden",
-    note: "A perfect blend of nature.",
-    rating: 5.0,
-    price: 3500,
-    image: product10,
-  },
-
-  {
-    id: 11,
-    name: "Serene Goddess",
-    note: "A perfect blend of nature.",
-    rating: 5.0,
-    price: 3500,
-    image: product11,
-  },
-
-  {
-    id: 12,
-    name: "Harmony Hues Tea",
-    note: "A perfect blend of nature.",
-    rating: 5.0,
-    price: 3500,
-    image: product12,
-  },
-
-  {
-    id: 13,
-    name: "Enchanted Empress Elixir",
-    note: "A perfect blend of nature.",
-    rating: 5.0,
-    price: 3500,
-    image: product13,
-  },
-
-  {
-    id: 14,
-    name: "Tranquil Tisane Tea",
-    note: "A perfect blend of nature.",
-    rating: 5.0,
-    price: 3500,
-    image: product14,
-  },
-
-  {
-    id: 15,
-    name: "Peaceful Potion Tea",
-    note: "A perfect blend of nature.",
-    rating: 5.0,
-    price: 3500,
-    image: product15,
-  },
-
-  {
-    id: 16,
-    name: "Pure Xen Herbal Mix",
-    note: "A perfect blend of nature.",
-    rating: 5.0,
-    price: 3500,
-    image: product16,
-  },
-
-  {
-    id: 17,
-    name: "Blissful Brew Tea",
-    note: "A perfect blend of nature.",
-    rating: 5.0,
-    price: 3500,
-    image: product17,
-  },
-
-  {
-    id: 18,
-    name: "Garden Goddess Tea",
-    note: "A perfect blend of nature.",
-    rating: 5.0,
-    price: 3500,
-    image: product18,
-  },
-];
-
 const ProductItem = () => {
+  const [products, setProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  // this is used when we want it to display per id/list
- /* const handleProductClick = (id) => {
-    navigate(`/productdetails/${id}`);
-  }; */
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const appId = 'ODC6BXVSV8DEXXN';
+      const apiKey = '192873e19bd04c61834c4eb4ed2151a420240712142214609520';
+      const organizationId = '01f4ce5681cf405d9cdafff4da97c544';
+      const url = `https://timbu-get-all-products.reavdev.workers.dev/?organization_id=${organizationId}&Appid=${appId}&Apikey=${apiKey}`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log("Fetched data:", data);
+
+        if (data && data.items) {
+          const products = data.items.map((item) => ({
+            id: item.id,
+            name: item.name,
+            note: item.description,
+            price: item.current_price[0]?.NGN[0] || 0,
+            image: item.photos.length > 0 ? `https://api.timbu.cloud/images/${item.photos[0].url}` : '', 
+            rating: 5.0 
+          }));
+          console.log("Processed products:", products);
+          setProducts(products);
+        } else {
+          console.error("Invalid data structure:", data);
+        }
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const handleProductClick = (id) => {
-    navigate(`/productdetails`);
+    navigate(`/productdetails/${id}`);
   };
 
+  const productsPerPage = 12;
+  const totalPages = Math.ceil(products.length / productsPerPage);
+  const displayedProducts = products.slice(
+    (currentPage - 1) * productsPerPage,
+    currentPage * productsPerPage
+  );
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="my-26">
@@ -204,17 +72,17 @@ const ProductItem = () => {
       </h2>
       <div className="container mx-auto p-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {products.map((product) => (
+          {displayedProducts.map((product) => (
             <div
               key={product.id}
-              className="w-[354px] h-[471px] relative cursor-pointer"
+              className="w-[354px] h-[471px] relative cursor-pointer mb-7"
               onClick={() => handleProductClick(product.id)}
             >
               <div className="relative">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-[354px] h-auto mb-4 rounded-md"
+                  className="w-[374px] h-[356px] mb-4 rounded-md"
                 />
                 <div
                   className="absolute top-7 right-5 flex items-center justify-center w-12 h-12"
@@ -266,7 +134,7 @@ const ProductItem = () => {
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-neutral-900 text-xl font-medium font-Playfair Display mb                  -2">
+                  <p className="text-neutral-900 text-xl font-medium font-Playfair Display mb-2">
                     ₦{product.price.toLocaleString()}
                   </p>
                   <button className="w-[111px] h-10 p-2.5 bg-orange-500 text-neutral-50 rounded justify-center items-center gap-2.5 inline-flex font-semibold font-Quicksand">
@@ -278,10 +146,13 @@ const ProductItem = () => {
           ))}
         </div>
       </div>
-      <PageList />
+      <PageList
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };
 
 export default ProductItem;
-
