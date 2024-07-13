@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Mainheader from "../components/header";
 import Foot from "../components/Footer";
-import ShoppingCartRow from "../components/shoppingcart";
-import { useCart } from "../components/cartcontext"; // Import useCart hook
+import ShoppingCart from "../components/shoppingcart";
+import { useCart } from "../components/cartcontext"; // Importing useCart hook
 
 const Checkout = () => {
   const { cart, setCart } = useCart(); // Access cart and setCart from CartContext
@@ -58,16 +58,9 @@ const Checkout = () => {
               Shopping Cart
             </h2>
             {/* Shopping cart items */}
-            {cart.map((product) => (
-              <ShoppingCartRow
-                key={product.id}
-                product={product}
-                onRemove={handleRemove}
-                onIncrease={handleIncrease}
-                onDecrease={handleDecrease}
-              />
-            ))}
+            <ShoppingCart />
 
+            {/* Order Summary */}
             <h2 className="w-[278px] text-neutral-900 text-3xl font-normal font-Quicksand mt-9">
               Order Summary
             </h2>
@@ -175,7 +168,9 @@ const Checkout = () => {
       {orderSuccess && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white rounded-lg p-8 shadow-lg text-center pt-5">
-            <h2 className="text-neutral-900 text-5xl font-medium font-Quicksand leading-[105px]">Success</h2>
+            <h2 className="text-neutral-900 text-5xl font-medium font-Quicksand leading-[105px]">
+              Success
+            </h2>
             <p className="mb-6 w-[523px] text-center text-neutral-900 text-xl font-normal font-Quicksand leading-[31px]">
               Your payment was successful and your order will be delivered in
               the next few days.
@@ -189,7 +184,6 @@ const Checkout = () => {
           </div>
         </div>
       )}
-
       <Foot />
     </div>
   );

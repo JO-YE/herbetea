@@ -1,8 +1,8 @@
 import React from "react";
 import { useCart } from "../components/cartcontext"; // Importing useCart hook
 
-const ShoppingCart = ({ product, onRemove, onIncrease, onDecrease }) => {
-  const { cart } = useCart(); // Access cart state from CartContext
+const ShoppingCart = () => {
+  const { cart, removeProduct, increaseQuantity, decreaseQuantity } = useCart(); // Access cart state and functions from CartContext
 
   return (
     <div className="my-26">
@@ -31,7 +31,7 @@ const ShoppingCart = ({ product, onRemove, onIncrease, onDecrease }) => {
                       {product.name}
                     </h3>
                     <p className="text-neutral-900 text-base font-normal font-Quicksand mb-2">
-                      {product.note}
+                      {product.description}
                     </p>
                     <div className="flex items-center">
                       {[...Array(5)].map((_, i) => (
@@ -60,7 +60,7 @@ const ShoppingCart = ({ product, onRemove, onIncrease, onDecrease }) => {
                         </svg>
                       )}
                       <span className="pl-3 text-black text-base font-normal font-Quicksand">
-                        (58)
+                        ({product.rating})
                       </span>
                     </div>
                   </div>
@@ -70,7 +70,7 @@ const ShoppingCart = ({ product, onRemove, onIncrease, onDecrease }) => {
                     </p>
                     <div className="flex items-center justify-end space-x-4">
                       <button
-                        onClick={() => onDecrease(product.id)}
+                        onClick={() => decreaseQuantity(product.id)}
                         className="quantity-button text-gray-500 text-lg font-normal font-Quicksand"
                       >
                         -
@@ -79,14 +79,14 @@ const ShoppingCart = ({ product, onRemove, onIncrease, onDecrease }) => {
                         {product.quantity}
                       </span>
                       <button
-                        onClick={() => onIncrease(product.id)}
+                        onClick={() => increaseQuantity(product.id)}
                         className="quantity-button text-gray-500 text-lg font-normal font-Quicksand"
                       >
                         +
                       </button>
                     </div>
                     <button
-                      onClick={() => onRemove(product.id)}
+                      onClick={() => removeProduct(product.id)}
                       className="remove-button text-gray-500 text-lg font-normal font-Quicksand mt-2"
                     >
                       Remove
