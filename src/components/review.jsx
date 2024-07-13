@@ -30,7 +30,7 @@ const reviews = [
 const ReviewBox = ({ name, rating, review, time }) => {
   return (
     <div className="w-full sm:w-1/2 lg:w-1/3 p-4">
-      <div className="bg-white shadow-md rounded-lg p-6">
+      <div className="w-[394px] h-[302px] rounded-[10px] border border-green-900 p-6">
         <div className="flex justify-between items-center mb-2">
           <h3 className="text-lg font-semibold">{name}</h3>
           <div className="flex items-center">
