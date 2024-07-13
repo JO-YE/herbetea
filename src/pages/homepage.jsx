@@ -10,14 +10,14 @@ import google from "../components/assets/google.png";
 
 const homepage = () => {
   return (
-    <div className="bg-white pt-2">
+    <div className="bg-white pt-2 ">
       {/** row 1 */}
-      <div className="relative lg:w-full max-w-[1100px] mx-auto rounded-tl-[10px] rounded-bl-[10px] overflow-hidden">
+      <div className="relative lg:w-full max-w-[1440px] mx-auto rounded-tl-[10px] rounded-bl-[10px] overflow-hidden">
         {/* Green overlay */}
-        <div className="absolute inset-0 bg-green-900 opacity-60"></div>
+        <div className="absolute inset-0 bg-green-900 opacity-60 mx-9"></div>
 
         {/* Main content container */}
-        <div className="relative flex flex-col-reverse h-[500px] md:flex-row md:h-[auto]">
+        <div className="relative flex flex-col-reverse h-[500px] mr-9 md:flex-row md:h-[auto]">
           {/* Right side content (on mobile, this will be below the image) */}
           <div className="flex-1 flex items-center justify-center md:order-1">
             <div className="text-white text-center md:text-left md:ml-20">
@@ -58,10 +58,10 @@ const homepage = () => {
 
       {/** row 2 */}
       <div className="flex justify-center mt-8">
-        <div className="relative w-full max-w-[1100px] h-[500px] rounded-tl-[10px] rounded-bl-[10px] overflow-hidden">
-          <div className="absolute inset-0 bg-yellow-500 opacity-25"></div>
+        <div className="relative w-full max-w-[1440px] h-[500px] rounded-tl-[10px] rounded-bl-[10px] overflow-hidden">
+          <div className="absolute inset-0 bg-yellow-500 opacity-25 mx-9"></div>
           <div className="relative flex flex-col md:flex-row">
-            <div className="flex-1 relative ">
+            <div className="flex-1 relative ml-9">
               <img
                 src={pic2}
                 alt="Search Icon"
@@ -70,7 +70,7 @@ const homepage = () => {
             </div>
             {/* Main content container */}
 
-            <div className="flex-1 flex items-center justify-center md:order-1">
+            <div className="flex-1 flex items-center  justify-center md:order-1">
               {/* Right side content */}
               <div className="text-white text-center md:text-left md:ml-20">
                 <h2 className="w-[410.66px] text-neutral-900 text-4xl font-normal font-Playfair Display py-2">
@@ -93,8 +93,8 @@ const homepage = () => {
 
       {/** row 3 */}
       <div className="flex justify-center mt-8">
-        <div className="relative w-full max-w-[1100px] h-[500px] rounded-tl-[10px] rounded-bl-[10px] overflow-hidden">
-          <div className="absolute inset-0 bg-yellow-500 opacity-25"></div>
+        <div className="relative w-full max-w-[1440px] h-[500px] rounded-tl-[10px] rounded-bl-[10px] overflow-hidden">
+          <div className="absolute inset-0 bg-yellow-500 opacity-25 mx-9"></div>
           <div className="relative flex flex-col-reverse h-[500px] md:flex-row md:h-[auto]">
             <div className="flex-1 flex items-center justify-center">
               {/* Left side content */}
@@ -113,11 +113,11 @@ const homepage = () => {
                 </a>
               </div>
             </div>
-            <div className="flex-1 relative">
+            <div className="flex-1 relative mr-9">
               <img
                 src={pic3}
                 alt="Search Icon"
-                className="w-full h-full object-cover"
+                className="w-full  object-cover"
               />
             </div>
           </div>
@@ -126,14 +126,14 @@ const homepage = () => {
 
       {/** row 4 */}
       <div className="flex justify-center mt-8">
-        <div className="relative w-full max-w-[1100px] h-[500px] rounded-tl-[10px] rounded-bl-[10px] overflow-hidden">
-          <div className="absolute inset-0 bg-yellow-500 opacity-25"></div>
+        <div className="relative w-full max-w-[1440px] h-[500px] rounded-tl-[10px] rounded-bl-[10px] overflow-hidden">
+          <div className="absolute inset-0 bg-yellow-500 opacity-25 mx-9"></div>
           <div className="relative flex flex-col md:flex-row">
             <div className="flex-1 relative">
               <img
                 src={pic4}
                 alt="Search Icon"
-                className="w-full h-[262px] md:w-full md:h-full object-cover"
+                className="w-full h-[262px] md:w-full md:h-full object-cover ml-9"
               />
             </div>
             <div className="flex-1 flex items-center justify-center md:order-1">
