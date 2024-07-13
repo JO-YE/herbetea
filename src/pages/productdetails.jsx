@@ -88,7 +88,7 @@ const ProductDetails = () => {
                   >
                     -
                   </button>
-                  <span className="w-[50px] h-[56px] p-2.5  bg-neutral-50 flex-col justify-center items-center gap-2.5 inline-flex self-stretch text-center text-green-900 text-2xl font-semibold font-Quicksand">{quantity}</span>
+                  <span className="w-[50px] h-[56px] p-2.5  bg-neutral-50 flex-col justify-center items-center gap-2.5 inline-flex self-stretch text-center text-green-900 text-xl font-semibold font-Quicksand">{quantity}</span>
                   <button
                     onClick={handleIncrease}
                     className="w-[50px] h-[56px] p-2.5 bg-green-900 rounded-tr rounded-br flex-col justify-center items-center gap-2.5 inline-flex self-stretch text-center text-neutral-50 text-2xl font-semibold font-Quicksand"
@@ -99,7 +99,7 @@ const ProductDetails = () => {
 
                 <button
                   onClick={() => navigate("/checkout")}
-                  className=" w-[273px] h-[56px] ml-auto px-6 py-3 bg-green-900 rounded-lg text-neutral-50 text-lg font-semibold font-Quicksand"
+                  className=" w-[173px] h-[56px] ml-auto px-6 py-3 bg-green-900 rounded-lg text-neutral-50 text-lg font-semibold font-Quicksand"
                 >
                   Buy Now
                 </button>
