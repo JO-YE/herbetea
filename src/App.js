@@ -2,8 +2,8 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import Product from './pages/product';
-import Productd from "./pages/productdetails";
-import Checkout from './pages/checkout'
+import ProductDetails from "./pages/productdetails";
+import Checkout from './pages/checkout';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product" element={<Product />} />
-          <Route path="/productdetails" element={<Productd />} />
+          <Route path="/productdetails/:id" element={<ProductDetails />} /> {/* Dynamic route for product details */}
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </Router>
