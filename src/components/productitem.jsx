@@ -32,7 +32,7 @@ const ProductItem = () => {
             note: item.description,
             price: item.current_price[0]?.NGN[0] || 0,
             image: item.photos.length > 0 ? `https://api.timbu.cloud/images/${item.photos[0].url}` : '', 
-            rating: 5.0 
+            rating: 5.0 // Assuming a fixed rating, you can adjust this as needed
           }));
           console.log("Processed products:", products);
           setProducts(products);
@@ -140,7 +140,7 @@ const ProductItem = () => {
                       </svg>
                     )}
                     <span className="pl-3 text-black text-base font-normal font-Quicksand">
-                      (58)
+                      ({product.rating})
                     </span>
                   </div>
                 </div>
@@ -149,9 +149,9 @@ const ProductItem = () => {
                     ₦{product.price.toLocaleString()}
                   </p>
                   <button
-                    className="w-[111px] h-10 p-2.5 bg-orange-500 text-neutral-50 rounded justify-center items-center gap-2.5 inline-flex font-semibold font-Quicksand"
+                    className="w-[111px] h-10 p-2.5 bg-orange-500 text-neutral-50 rounded inline-flex items-center justify-center font-semibold font-Quicksand"
                     onClick={(e) => {
-                      e.stopPropagation(); // Prevents navigation to product details
+                      e.stopPropagation(); // Prevents propagation if nested in other clickable elements
                       addToCartAndShowNotification(product);
                     }}
                   >

@@ -45,6 +45,7 @@ const ProductDetails = () => {
     setQuantity(Math.max(1, quantity - 1));
   };
 
+
   return (
     <div>
       <Mainheader />

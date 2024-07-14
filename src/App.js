@@ -6,11 +6,12 @@ import ProductDetails from "./pages/productdetails";
 import Checkout from "./pages/checkout";
 import { CartProvider } from "./components/cartcontext";
 
+
 function App() {
   return (
     <div>
-      <Router>
-        <CartProvider>
+      <CartProvider>
+        <Router>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/product" element={<Product />} />
@@ -21,8 +22,8 @@ function App() {
             {/* Dynamic route for product details */}
             <Route path="/checkout" element={<Checkout />} />
           </Routes>
-        </CartProvider>
-      </Router>
+        </Router>
+      </CartProvider>
     </div>
   );
 }

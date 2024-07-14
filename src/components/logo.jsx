@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import searchIcon from "./assets/search.png";
 import carticon from "./assets/shopping-cart.png";
+import { Link } from "react-router-dom";
+import { useCart } from '../components/cartcontext';
 
-const Logo = ({ cart = [] }) => {
+const Logo = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { cart } = useCart(); // Access the cart state
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
+
+
 
   return (
     <header className="bg-white pt-10 lg:bg-white w-full h-20 pb-40 px-24 py-56 relative flex justify-between items-start overflow-hidden">
@@ -36,17 +41,17 @@ const Logo = ({ cart = [] }) => {
       {/* Side logo */}
       {/* Cart Icon */}
       <div className="flex items-center mt-4 relative">
-        <a href="/checkout">
+        <Link to="/checkout" className="flex items-center">
           <img
             src={carticon}
             alt="shopping cart"
             className="ml-4 w-[20px] h-[20px]"
           />
           {/* Red dot indicator */}
-          <div className="absolute top-0 right-0 left-0.3 w-2 h-2 bg-red-500 rounded-full flex items-center justify-center text-black">
+          <span className="cart-count absolute top-0 right-0 left-0.3 w-2 h-2 bg-red-500 rounded-full flex items-center justify-center text-black">
             {cart.length}
-          </div>
-        </a>
+          </span>
+        </Link>
       </div>
 
       {/* Nav list doing this for desktop view*/}
