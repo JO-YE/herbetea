@@ -1,28 +1,26 @@
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useReducer, useEffect } from 'react';
 
-// Create a context
+// Creating a context
 const CartContext = createContext();
 
+// for persistency
 const initialState = {
-  cart: [],
+  cart: JSON.parse(localStorage.getItem('cart')) || [],
 };
 
 // Reducer function to manage cart state
 const cartReducer = (state, action) => {
   switch (action.type) {
     case 'ADD_TO_CART':
-      // Check if the product is already in the cart
       const existingProductIndex = state.cart.findIndex(
         (item) => item.id === action.payload.id
       );
 
       if (existingProductIndex !== -1) {
-        // Update quantity if the product is already in the cart
         const updatedCart = [...state.cart];
         updatedCart[existingProductIndex].quantity += 1;
         return { ...state, cart: updatedCart };
       } else {
-        // Add new product to the cart
         return { ...state, cart: [...state.cart, { ...action.payload, quantity: 1 }] };
       }
     case 'REMOVE_FROM_CART':
@@ -50,7 +48,7 @@ const cartReducer = (state, action) => {
   }
 };
 
-// Create a custom hook to use the CartContext
+// Creating a custom hook to use the CartContext
 export const useCart = () => {
   return useContext(CartContext);
 };
@@ -58,6 +56,10 @@ export const useCart = () => {
 // CartProvider component to wrap around the app
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(state.cart));
+  }, [state.cart]);
 
   const addToCart = (product) => {
     dispatch({ type: 'ADD_TO_CART', payload: product });
