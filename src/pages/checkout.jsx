@@ -39,7 +39,7 @@ const Checkout = () => {
                 cart.map((product) => (
                   <div
                     key={product.id}
-                    className="flex justify-between items-center p-4 rounded-lg shadow-md mb-4"
+                    className="flex justify-between items-center  rounded-lg shadow-sm mb-4 pb-2"
                   >
                     <div className="w-1/4">
                       <img
@@ -55,19 +55,19 @@ const Checkout = () => {
                       <p className="text-neutral-900 text-base font-normal font-Quicksand mb-2">
                         {product.note}
                       </p>
-                      <div className="flex items-center space-x-2">
+                      <div className="flex items-center">
                         <button
                           onClick={() => decreaseQuantity(product.id)}
-                          className="quantity-button bg-gray-200 px-2 rounded"
+                          className="quantity-button w-[31.33px] h-7 p-2.5 bg-green-900 rounded-tl rounded-bl flex-col justify-center items-center gap-2.5 inline-flex self-stretch text-center text-neutral-50 text-xl font-semibold font-Quicksand"
                         >
                           -
                         </button>
-                        <span className="text-gray-900 text-lg font-normal font-Quicksand">
+                        <span className="w-[31.33px] h-7 p-2.5 bg-neutral-50 flex-col justify-center items-center gap-2.5 inline-flex self-stretch text-center text-black opacity-60 text-[19px] font-semibold font-Quicksand">
                           {product.quantity}
                         </span>
                         <button
                           onClick={() => increaseQuantity(product.id)}
-                          className="quantity-button bg-gray-200 px-2 rounded"
+                          className="quantity-button w-[31.33px] h-7 p-2.5 bg-green-900 rounded-tr rounded-br flex-col justify-center items-center gap-2.5 inline-flex self-stretch text-center text-neutral-50 text-xl font-semibold font-Quicksand"
                         >
                           +
                         </button>
@@ -79,7 +79,7 @@ const Checkout = () => {
                       </p>
                       <button
                         onClick={() => removeProduct(product.id)}
-                        className="remove-button text-red-500 text-lg font-normal font-Quicksand"
+                        className="text-gray-500 text-xl font-normal font-Quicksand"
                       >
                         Remove
                       </button>
@@ -90,7 +90,7 @@ const Checkout = () => {
             </div>
 
             {/* Order Summary */}
-            <h2 className="w-[278px] text-neutral-900 text-3xl font-normal font-Quicksand mt-9">
+            <h2 className="w-[278px] text-neutral-900 text-3xl font-normal font-Quicksand mt-5">
               Order Summary
             </h2>
             <table className="w-full text-left">
