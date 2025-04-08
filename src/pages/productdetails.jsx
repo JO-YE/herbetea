@@ -12,13 +12,11 @@ const ProductDetails = () => {
   const [showKeyIngredients, setShowKeyIngredients] = useState(false);
   const [showHowToUse, setShowHowToUse] = useState(false);
   const [showAllergyInfo, setShowAllergyInfo] = useState(false);
-  const appId = "ODC6BXVSV8DEXXN";
-  const apiKey = "192873e19bd04c61834c4eb4ed2151a420240712142214609520";
-  const organizationId = "01f4ce5681cf405d9cdafff4da97c544";
+  
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const url = `https://timbu-get-single-product.reavdev.workers.dev/${id}?organization_id=${organizationId}&Appid=${appId}&Apikey=${apiKey}`;
+      const url = `https://dummyjson.com/products/{id}`;
       try {
         const response = await fetch(url);
         const data = await response.json();
@@ -53,7 +51,7 @@ const ProductDetails = () => {
         {/* Left side Image */}
         <div className="flex-1 relative">
           <img
-            src={`https://api.timbu.cloud/images/${product.photos[0]?.url}`}
+           src={product.thumbnail}
             alt={product.name}
             className="w-full h-[400px] lg:h-full object-cover"
           />
