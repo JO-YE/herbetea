@@ -20,6 +20,16 @@ const ProductDetails = () => {
       try {
         const response = await fetch(url);
         const data = await response.json();
+
+        const products = data.products.map((item) => ({
+       
+        name: item.title,
+        note: item.description,
+        price: item.price,
+        image: item.thumbnail || item.images[0],
+        
+      }));
+        
         console.log("Fetched product data:", data);
         setProduct(data);
       } catch (error) {
@@ -62,7 +72,7 @@ const ProductDetails = () => {
           <div className="bg-yellow-100 h-full flex flex-col justify-start p-5 lg:p-10">
             <div className="text-center text-white">
               <h2 className="text-neutral-900 text-3xl lg:text-3xl font-normal font-Playfair Display mb-3 mt-0">
-                {product.name} ₦3500
+                {product.title} ₦{product.price * 100}
               </h2>
               <p className="text-neutral-900 text-lg lg:text-xl font-Quicksand mt-7">
                 {product.description} <br />
