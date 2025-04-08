@@ -82,10 +82,10 @@ const ProductItem = () => {
             >
               <div className="relative">
                 <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-[374px] h-[356px] mb-4 rounded-md"
-                />
+  src={product.image}
+  alt={product.name}
+  className="w-[374px] h-[320px] mb-4 rounded-md object-contain"
+/>
                 <div
                   className="absolute top-7 right-5 flex items-center justify-center w-12 h-12"
                   style={{
