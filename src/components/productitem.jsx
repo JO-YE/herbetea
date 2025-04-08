@@ -14,41 +14,32 @@ const ProductItem = () => {
   const { addToCart } = useCart(); // Access addToCart function from CartContext
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const appId = 'ODC6BXVSV8DEXXN';
-      const apiKey = '192873e19bd04c61834c4eb4ed2151a420240712142214609520';
-      const organizationId = '01f4ce5681cf405d9cdafff4da97c544';
-      const url = `https://timbu-get-all-products.reavdev.workers.dev/?organization_id=${organizationId}&Appid=${appId}&Apikey=${apiKey}`;
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch("https://dummyjson.com/products?limit=100");
+      const data = await response.json();
 
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        console.log("Fetched data:", data);
+      const products = data.products.map((item) => ({
+        id: item.id,
+        name: item.title,
+        note: item.description,
+        price: item.price,
+        image: item.thumbnail || item.images[0],
+        rating: item.rating || 4.5,
+      }));
 
-        if (data && data.items) {
-          const products = data.items.map((item) => ({
-            id: item.id,
-            name: item.name,
-            note: item.description,
-            price: item.current_price[0]?.NGN[0] || 0,
-            image: item.photos.length > 0 ? `https://api.timbu.cloud/images/${item.photos[0].url}` : '', 
-            rating: 5.0 // Assuming a fixed rating, you can adjust this as needed
-          }));
-          console.log("Processed products:", products);
-          setProducts(products);
-        } else {
-          console.error("Invalid data structure:", data);
-        }
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+      console.log("DummyJSON Products:", products);
+      setProducts(products);
+    } catch (error) {
+      console.error("Error fetching dummy products:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchProducts();
-  }, []);
-
+  fetchProducts();
+}, []);
+ 
   const handleProductClick = (id) => {
     navigate(`/productdetails/${id}`);
   };
