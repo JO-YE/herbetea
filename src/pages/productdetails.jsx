@@ -53,7 +53,7 @@ const ProductDetails = () => {
           <img
            src={product.thumbnail}
             alt={product.name}
-            className="w-full h-[400px] lg:h-full object-cover"
+            className="w-[200] h-[300px] lg:h-full object-cover"
           />
         </div>
 
@@ -62,16 +62,11 @@ const ProductDetails = () => {
           <div className="bg-yellow-100 h-full flex flex-col justify-start p-5 lg:p-10">
             <div className="text-center text-white">
               <h2 className="text-neutral-900 text-3xl lg:text-3xl font-normal font-Playfair Display mb-3 mt-0">
-                {product.title} ₦{product.price * 100}
+                {product.title} ₦{product.price * 10}
               </h2>
               <p className="text-neutral-900 text-lg lg:text-xl font-Quicksand mt-7">
                 {product.description} <br />
-                <span>
-                  Our Specially crafted slimming herbal tea blends are designed
-                  to support women’s health and well-being. Each sip offers an
-                  harmonious perfect blend of organic ingredients, promoting
-                  relaxation, vitality, and overall wellness.{" "}
-                </span>
+               
               </p>
               <ul className="text-neutral-900 text-base lg:text-lg font-normal font-Quicksand list-disc pl-5 lg:pl-7 pt-5">
                 <li>Detoxifies and cleanses the liver</li>
