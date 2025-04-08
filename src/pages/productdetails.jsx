@@ -15,31 +15,21 @@ const ProductDetails = () => {
   
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      const url = `https://dummyjson.com/products/${id}`;
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
+  const fetchProduct = async () => {
+    const url = `https://dummyjson.com/products/${id}`;
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log("Fetched product data:", data);
+      setProduct(data);
+    } catch (error) {
+      console.error("Error fetching product:", error);
+    }
+  };
 
-        const products = data.products.map((item) => ({
-       
-        name: item.title,
-        note: item.description,
-        price: item.price,
-        image: item.thumbnail || item.images[0],
-        
-      }));
-        
-        console.log("Fetched product data:", data);
-        setProduct(data);
-      } catch (error) {
-        console.error("Error fetching product:", error);
-      }
-    };
-
-    fetchProduct();
-  }, [id]);
-
+  fetchProduct();
+}, [id]);
+  
   if (!product) {
     return <div>Loading...</div>;
   }
