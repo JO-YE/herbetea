@@ -51,10 +51,11 @@ const ProductDetails = () => {
         {/* Left side Image */}
         <div className="flex-1 relative">
           <img
-           src={product.thumbnail}
+            src={product.thumbnail}
             alt={product.name}
-            className="w-[200px] h-[300px] lg:h-full object-cover"
+           className="w-[200px] h-[300px] rounded-xl shadow-md object-cover mx-auto"
           />
+
         </div>
 
         {/* Right side (Background Div with Content) */}
